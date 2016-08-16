@@ -15,5 +15,12 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     console.log('jobToSend', jobToSend);
     $scope.company = '';
     $scope.title = '';
+    $http({
+      method: 'GET',
+      url: '/addJob',
+    }).then(function(data){
+      var allJobs = data.data;
+      console.log(allJobs);
+    });
   };
 }]);

@@ -19,7 +19,7 @@ router.post('/', function(req, res){
 router.get('/', function(req, res){
   console.log('in get');
   pg.connect(connection, function(err, client, done){
-    var resutls = [];
+    var results = [];
     var query = client.query('SELECT * FROM jobs');
     query.on('row', function(row){
       results.push(row);
