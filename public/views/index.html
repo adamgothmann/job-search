@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>job search app</title>
     <link rel="stylesheet" href="/vendors/angular-material.css" media="screen" title="no title" charset="utf-8">
-
+    <link rel="stylesheet" href="stylesheet.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/vendors/bootstrap.css" media="screen" title="no title" charset="utf-8">
     <script src="/vendors/angular.min.js" charset="utf-8"></script>
     <script src="/vendors/angular-aria.js" charset="utf-8"></script>
     <script src="/vendors/angular-animate.js" charset="utf-8"></script>
@@ -12,26 +13,52 @@
     <script src="/scripts/script.js" charset="utf-8"></script>
   </head>
   <body ng-controller="mainController">
-    <md-content>
-      <form ng-submit="sendJob()">
-        <div>
-          <label for="">Company: </label>
-          <input type="text" ng-model="company" name="name" value="">
-        </div>
-        <div>
-          <label for="">Title: </label>
-          <input type="text" ng-model="title" name="name" value="">
-        </div>
-        <div>
-          <label for="">Date applied</label>
-          <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
-        </div>
-        <input type="submit" name="name" value="Submit">
-      </form>
-    </md-content>
-
-    <div ng-repeat="job in allJobs">
-      <p>{{job}}</p>
+    <div class="container">
+      <md-content>
+        <form ng-submit="sendJob()">
+          <div>
+            <label for="">Company: </label>
+            <input type="text" ng-model="company" name="name" value="">
+          </div>
+          <div>
+            <label for="">Title: </label>
+            <input type="text" ng-model="title" name="name" value="">
+          </div>
+          <div>
+            <label for="">Date applied</label>
+            <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+          </div>
+          <input type="submit" name="name" value="Submit">
+        </form>
+      </md-content>
+      <div class="row">
+        <table>
+          <tr>
+            <th class="col-md-4">Company</th>
+            <th class="col-md-4">Title</th>
+            <th class="col-md-4">Date applied</th>
+            <th class="col-md-4">Status</th>
+          </tr>
+          <tr ng-repeat="job in allJobs">
+            <td class="col-md-4">{{job.company}}</p>
+            <td class="col-md-4">{{job.title}}</p>
+            <td class="col-md-4">{{job.date}}</p>
+            <td class="col-md-4">
+              <!-- <select id="something" ng-model="stats" ng-change="getStatus()" class="" name="" >
+                <option value="applied">applied</option>
+                <option value="rejected">rejected</option>
+                <option value="heard back">heard back</option>
+                <option value="interview scheduled">interview scheduled</option>
+                <option value="interviewed">interviewed</option>
+              </select> -->
+              <!-- <md-select ng-model="status" ng-change="getStatus()">
+                  <md-option ng-repeat="status in jobStatus" value="{{status}}">{{status}}</md-option>
+              </md-select> -->
+              <select ng-model="something" ng-options="status.status for status in jobStatus" ng-change="getStatus()" class="" name=""></select>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </body>
 </html>

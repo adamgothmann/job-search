@@ -1,11 +1,19 @@
 var myApp=angular.module('myApp', ['ngMaterial']);
 
 myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
+  $scope.allJobs = [];
+  // $http({
+  //   method: 'GET',
+  //   url:'/addJob'
+  // }).then(function(response){
+  //   $scope.allJobs = response.data;
+  // });
   $scope.sendJob = function(){
     var jobToSend = {
       company: $scope.company,
       title: $scope.title,
-      date: $scope.date
+      date: $scope.date,
+      status: $scope.status
     };
     $http({
       method: 'POST',
@@ -18,9 +26,22 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     $http({
       method: 'GET',
       url: '/addJob',
-    }).then(function(data){
-      var allJobs = data.data;
-      console.log(allJobs);
+    }).then(function(response){
+      $scope.allJobs = response.data;
+      console.log($scope.allJobs);
     });
+  };//end sendJob
+  $scope.sendJob();//loads jobs on page load
+
+  $scope.jobStatus = [
+    {status: 'applied'},
+    {status: 'rejected'},
+    {status: 'heard back'},
+    {status: 'interview scheduled'},
+    {status: 'interviewed'}
+  ];
+  // $scope.jobStatus = ['applied', 'rejected', 'heard back', 'interview scheduled', 'interviewed'];
+  $scope.getStatus = function(){
+    console.log('status', $scope.something);
   };
 }]);
