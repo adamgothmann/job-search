@@ -34,27 +34,21 @@
       <div class="row">
         <table>
           <tr>
-            <th class="col-md-4">Company</th>
-            <th class="col-md-4">Title</th>
-            <th class="col-md-4">Date applied</th>
-            <th class="col-md-4">Status</th>
+            <th class="col-md-3">Company</th>
+            <th class="col-md-3">Title</th>
+            <th class="col-md-2">Date applied</th>
+            <th class="col-md-2">Status</th>
+            <th class="col-md-2">Change status</th>
           </tr>
-          <tr ng-repeat="job in allJobs">
-            <td class="col-md-4">{{job.company}}</p>
-            <td class="col-md-4">{{job.title}}</p>
-            <td class="col-md-4">{{job.date}}</p>
-            <td class="col-md-4">
-              <!-- <select id="something" ng-model="stats" ng-change="getStatus()" class="" name="" >
-                <option value="applied">applied</option>
-                <option value="rejected">rejected</option>
-                <option value="heard back">heard back</option>
-                <option value="interview scheduled">interview scheduled</option>
-                <option value="interviewed">interviewed</option>
-              </select> -->
-              <!-- <md-select ng-model="status" ng-change="getStatus()">
-                  <md-option ng-repeat="status in jobStatus" value="{{status}}">{{status}}</md-option>
-              </md-select> -->
-              <select ng-model="something" ng-options="status.status for status in jobStatus" ng-change="getStatus()" class="" name=""></select>
+          <tr ng-repeat="job in allJobs" id="{{$index + 1}}">
+            <td class="col-md-3">{{job.company}}</td>
+            <td class="col-md-3">{{job.title}}</td>
+            <td class="col-md-2">{{job.date}}</td>
+            <td class="col-md-2">{{job.status}}</td>
+            <td class="col-md-2">
+              <select ng-model="status" ng-options="job.status for job in jobStatus" ng-change="getStatus($index + 1)">
+                <option value="">select status</option>
+              </select>
             </td>
           </tr>
         </table>

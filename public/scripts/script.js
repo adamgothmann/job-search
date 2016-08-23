@@ -2,18 +2,20 @@ var myApp=angular.module('myApp', ['ngMaterial']);
 
 myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   $scope.allJobs = [];
-  // $http({
-  //   method: 'GET',
-  //   url:'/addJob'
-  // }).then(function(response){
-  //   $scope.allJobs = response.data;
-  // });
+  $http({
+    method: 'GET',
+    url:'/addJob/loadJobs'
+  }).then(function(response){
+    $scope.allJobs = response.data;
+  });
+
   $scope.sendJob = function(){
+    var status = 'applied';
     var jobToSend = {
       company: $scope.company,
       title: $scope.title,
       date: $scope.date,
-      status: $scope.status
+      status: status
     };
     $http({
       method: 'POST',
@@ -31,7 +33,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       console.log($scope.allJobs);
     });
   };//end sendJob
-  $scope.sendJob();//loads jobs on page load
+  // $scope.sendJob();//loads jobs on page load
 
   $scope.jobStatus = [
     {status: 'applied'},
@@ -41,7 +43,17 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     {status: 'interviewed'}
   ];
   // $scope.jobStatus = ['applied', 'rejected', 'heard back', 'interview scheduled', 'interviewed'];
-  $scope.getStatus = function(){
-    console.log('status', $scope.something);
+  $scope.getStatus = function(index){
+    console.log('work', this.status.status);
+    var statusToSend = {
+      id: index,
+      status: this.status.status
+    };
+    console.log(statusToSend);
+    $http({
+      method: 'POST',
+      url: 'updateStatus',
+      data: statusToSend
+    });
   };
 }]);
