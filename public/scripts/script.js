@@ -44,7 +44,6 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   ];
   // $scope.jobStatus = ['applied', 'rejected', 'heard back', 'interview scheduled', 'interviewed'];
   $scope.getStatus = function(index){
-    console.log('work', this.status.status);
     var statusToSend = {
       id: index,
       status: this.status.status
