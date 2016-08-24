@@ -8,4 +8,11 @@ td {
 }
 form {
   background-color: #d9d9d9;
+  margin-top: 10px;
+}
+.table {
+  margin-bottom: 10px;
+}
+.something{
+  margin: 10px;
 }

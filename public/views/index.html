@@ -10,50 +10,55 @@
     <script src="/vendors/angular-aria.js" charset="utf-8"></script>
     <script src="/vendors/angular-animate.js" charset="utf-8"></script>
     <script src="/vendors/angular-material.js" charset="utf-8"></script>
+    <script src="/vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="/scripts/script.js" charset="utf-8"></script>
   </head>
   <body ng-controller="mainController">
     <div class="container">
       <md-content>
         <form ng-submit="sendJob()">
-          <div>
-            <label for="">Company: </label>
-            <input type="text" ng-model="company" name="name" value="">
+          <div class="something">
+            <div>
+              <label for="">Company: </label>
+              <input type="text" ng-model="company" name="name" value="">
+            </div>
+            <div>
+              <label for="">Title: </label>
+              <input type="text" ng-model="title" name="name" value="">
+            </div>
+            <div>
+              <label for="">Date applied</label>
+              <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+            </div>
+            <input type="submit" name="name" value="Submit">
           </div>
-          <div>
-            <label for="">Title: </label>
-            <input type="text" ng-model="title" name="name" value="">
-          </div>
-          <div>
-            <label for="">Date applied</label>
-            <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
-          </div>
-          <input type="submit" name="name" value="Submit">
         </form>
       </md-content>
-      <div class="row">
-        <table>
-          <tr>
-            <th class="col-md-3">Company</th>
-            <th class="col-md-3">Title</th>
-            <th class="col-md-2">Date applied</th>
-            <th class="col-md-2">Status</th>
-            <th class="col-md-2">Change status</th>
-          </tr>
-      </div>
-      <div class="row">
-          <tr ng-repeat="job in allJobs" id="{{$index + 1}}">
-            <td class="col-md-3" ng-model="job.company">{{job.company}}</td>
-            <td class="col-md-3">{{job.title}}</td>
-            <td class="col-md-2">{{job.date}}</td>
-            <td class="col-md-2">{{job.status}}</td>
-            <td class="col-md-2">
-              <select ng-model="status" ng-options="job.status for job in jobStatus" ng-change="getStatus($index + 1)">
-                <option value="">select status</option>
-              </select>
-            </td>
-          </tr>
-        </table>
+      <div class="table">
+        <div class="row">
+          <table>
+            <tr>
+              <th class="col-md-3">Company</th>
+              <th class="col-md-3">Title</th>
+              <th class="col-md-2">Date applied</th>
+              <th class="col-md-2">Status</th>
+              <th class="col-md-2">Change status</th>
+            </tr>
+        </div>
+        <div class="row">
+            <tr ng-repeat="job in allJobs" id="{{$index + 1}}">
+              <td class="col-md-3" ng-model="job.company">{{job.company}}</td>
+              <td class="col-md-3">{{job.title}}</td>
+              <td class="col-md-2">{{job.date}}</td>
+              <td class="col-md-2">{{job.status}}</td>
+              <td class="col-md-2">
+                <select ng-model="status" ng-options="job.status for job in jobStatus" ng-change="getStatus($index + 1)">
+                  <option value="">select status</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </body>
