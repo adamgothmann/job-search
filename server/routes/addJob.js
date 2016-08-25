@@ -40,7 +40,7 @@ router.get('/loadJobs', function(req, res){
   console.log('in get');
   pg.connect(connection, function(err, client, done){
     var results = [];
-    var query = client.query('SELECT * FROM jobs ORDER BY date');
+    var query = client.query('SELECT * FROM jobs ORDER BY id');
     query.on('row', function(row){
       // row.date.moment().format();
       if(row.company !== null){
