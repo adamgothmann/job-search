@@ -1,4 +1,19 @@
-var myApp=angular.module('myApp', ['ngMaterial']);
+var myApp=angular.module('myApp', ['ngMaterial', 'ngRoute']);
+
+myApp.config(["$routeProvider", function($routeProvider){
+    $routeProvider.
+          when("/home", {
+              templateUrl: "/views/partials/home.html",
+              controller: "mainController"
+          }).
+          when("/applied", {
+              templateUrl: "/views/partials/applied.html",
+              controller: "mainController"
+          }).
+          otherwise({
+            redirectTo: '/home'
+          });
+}]);
 
 myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   $scope.allJobs = [];

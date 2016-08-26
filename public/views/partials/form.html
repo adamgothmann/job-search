@@ -1,0 +1,31 @@
+<md-content>
+  <form ng-submit="sendJob()">
+    <div class="something">
+      <div>
+        <label for="">Company: </label>
+        <input type="text" ng-model="company" name="name" value="">
+      </div>
+      <div>
+        <label for="">Title: </label>
+        <input type="text" ng-model="title" name="name" value="">
+      </div>
+      <div>
+        <label for="">Date applied</label>
+        <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+      </div>
+      <input type="submit" name="name" value="Submit">
+    </div>
+  </form>
+</md-content>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="applied">Applied</a></li>
+      <li><a href="#">Rejected</a></li>
+      <li><a href="#">Heard back</a></li>
+      <li><a href="#">Interview scheduled</a></li>
+      <li><a href="#">Interviewed</a></li>
+    </ul>
+  </div>
+</nav>
