@@ -31,27 +31,27 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       switch($scope.allJobs[i].status){
         case 'applied':
           // $scope.applied = $scope.allJobs.slice(i, (i + 1));
-          var applied = $scope.allJobs.slice(i, (i + 1));
+          var applied = $scope.allJobs.slice(i, (i + 1)).pop();
           $scope.applied.push(applied);
           break;
         case 'rejected':
           // $scope.rejected = $scope.allJobs.slice(i, (i + 1));
-          var rejected = $scope.allJobs.slice(i, (i + 1));
+          var rejected = $scope.allJobs.slice(i, (i + 1)).pop();
           $scope.rejected.push(rejected);
           break;
         case 'heard back':
           // $scope.heardBack = $scope.allJobs.slice(i, (i + 1));
-          var heardBack = $scope.allJobs.slice(i, (i + 1));
+          var heardBack = $scope.allJobs.slice(i, (i + 1)).pop();
           $scope.heardBack.push(heardBack);
           break;
         case 'interview scheduled':
           // $scope.interviewScheduled = $scope.allJobs.slice(i, (i + 1));
-          var interviewScheduled = $scope.allJobs.slice(i, (i + 1));
+          var interviewScheduled = $scope.allJobs.slice(i, (i + 1)).pop();
           $scope.interviewScheduled.push(interviewScheduled);
           break;
         case 'interviewed':
           // $scope.interviewed = $scope.allJobs.slice(i, (i + 1));
-          var interviewed = $scope.allJobs.slice(i, (i + 1));
+          var interviewed = $scope.allJobs.slice(i, (i + 1)).pop();
           $scope.interviewed.push(interviewed);
           break;
       }
