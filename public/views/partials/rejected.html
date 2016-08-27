@@ -1,6 +1,6 @@
 <div class="table">
   <div class="row">
-    <h3>Jobs I have applied to</h2>
+    <h3>Jobs I have been rejected from</h2>
     <table>
       <tr>
         <th class="col-md-3">Company</th>
@@ -11,7 +11,7 @@
       </tr>
   </div>
   <div class="row">
-      <tr ng-repeat="job in applied" id="{{$index + 1}}">
+      <tr ng-repeat="job in rejected" id="{{$index + 1}}">
         <td class="col-md-3" ng-model="job.company">{{job.company}}</td>
         <td class="col-md-3">{{job.title}}</td>
         <td class="col-md-2">{{job.date}}</td>
