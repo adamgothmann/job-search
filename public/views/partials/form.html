@@ -3,15 +3,15 @@
     <div class="something">
       <div>
         <label for="">Company: </label>
-        <input type="text" ng-model="company" name="name" value="">
+        <input type="text" ng-model="$parent.company" name="name" value="">
       </div>
       <div>
         <label for="">Title: </label>
-        <input type="text" ng-model="title" name="name" value="">
+        <input type="text" ng-model="$parent.title" name="name" value="">
       </div>
       <div>
         <label for="">Date applied</label>
-        <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+        <md-datepicker ng-model="$parent.date" md-placeholder="Enter date"></md-datepicker>
       </div>
       <input type="submit" name="name" value="Submit">
     </div>
