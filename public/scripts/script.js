@@ -1,35 +1,4 @@
-var myApp=angular.module('myApp', ['ngMaterial', 'ngRoute']);
-
-myApp.config(["$routeProvider", function($routeProvider){
-    $routeProvider.
-          when("/home", {
-            templateUrl: "/views/partials/home.html",
-            controller: "mainController"
-          }).
-          when("/applied", {
-            templateUrl: "/views/partials/applied.html",
-            controller: "mainController"
-          }).
-          when("/rejected", {
-            templateUrl: "/views/partials/rejected.html",
-            controller: "mainController"
-          }).
-          when("/heardBack", {
-            templateUrl: "/views/partials/heardBack.html",
-            controller: "mainController"
-          }).
-          when("/interviewScheduled", {
-            templateUrl: "/views/partials/interviewScheduled.html",
-            controller: "mainController"
-          }).
-          when("/interviewed", {
-            templateUrl: "/views/partials/interviewed.html",
-            controller: "mainController"
-          }).
-          otherwise({
-            redirectTo: '/home'
-          });
-}]);
+var myApp=angular.module('myApp', ['ngMaterial']);
 
 myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   $scope.allJobs = [];

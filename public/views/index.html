@@ -10,9 +10,16 @@
   <body ng-controller="mainController">
     <div class="container">
       <header ng-include="'/views/partials/form.html'"></header>
-      <main ng-view></main>
+      <div id="main" class="tab-content">
+        <div id="all" class="tab-pane fade in active" ng-include="'/views/partials/home.html'"></div>
+        <div id="applied" class="tab-pane fade" ng-include="'/views/partials/applied.html'"></div>
+        <div id="rejected" class="tab-pane fade" ng-include="'/views/partials/rejected.html'"></div>
+        <div id="heardBack" class="tab-pane fade" ng-include="'/views/partials/heardBack.html'"></div>
+        <div id="interviewScheduled" class="tab-pane fade" ng-include="'/views/partials/interviewScheduled.html'"></div>
+        <div id="interviewed" class="tab-pane fade" ng-include="'/views/partials/interviewed.html'"></div>
+      </div>
     </div>
-    
+
     <script src="/vendors/angular.min.js" charset="utf-8"></script>
     <script src="/vendors/angular-aria.js" charset="utf-8"></script>
     <script src="/vendors/angular-animate.js" charset="utf-8"></script>
