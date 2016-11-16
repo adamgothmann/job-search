@@ -15,7 +15,7 @@ app.get( '/', function( req, res ){
 }); // end base url
 
 app.set('port', process.env.PORT || 3000);
-app.listen(app.get('port'), function() {
+aapp.listen(app.get('port'), function() {
   console.log('on port', app.get('port'));
 });
 
