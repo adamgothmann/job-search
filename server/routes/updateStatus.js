@@ -9,7 +9,7 @@ router.post('/', function(req,res){
   console.log(req.body);
   pg.connect(connection, function(err, client, done){
     console.log('in query');
-    client.query('UPDATE jobs SET status = ($1) WHERE id = ($2)', [ req.body.status, req.body.id ] );
+    client.query('UPDATE jobs2 SET status = ($1) WHERE id = ($2)', [ req.body.status, req.body.id ] );
   });
 });
 

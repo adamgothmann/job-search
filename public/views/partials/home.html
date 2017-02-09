@@ -12,7 +12,7 @@
   <div class="row">
       <tr ng-repeat="job in allJobs" id="{{$index + 1}}">
         <td class="col-md-3">{{job.company}}</td>
-        <td class="col-md-3">{{job.title}}</td>
+        <td class="col-md-2">{{job.title}}</td>
         <td class="col-md-2">{{job.date}}</td>
         <td class="col-md-2">{{job.status}}</td>
         <td class="col-md-2">
@@ -20,6 +20,7 @@
             <option value="">select status</option>
           </select>
         </td>
+        <td><button ng-click="removeJob($index + 1)" class="remove" type="button" name="button">delete</button></td>
       </tr>
     </table>
   </div>

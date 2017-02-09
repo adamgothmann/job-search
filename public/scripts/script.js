@@ -125,4 +125,8 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       data: statusToSend
     });
   };
+
+  $scope.removeJob = function(index){
+    console.log(index);
+  };
 }]);

@@ -9,7 +9,7 @@ var router = express.Router();
 router.post('/', function(req, res){
   console.log(req.body);
   pg.connect(connection, function(err, client, done){
-    var query = client.query('INSERT INTO jobs (company, title, date, status) VALUES ($1, $2, $3, $4)', [req.body.company, req.body.title, req.body.date, req.body.status]);
+    var query = client.query('INSERT INTO jobs2 (company, title, date, status) VALUES ($1, $2, $3, $4)', [req.body.company, req.body.title, req.body.date, req.body.status]);
 
     if(err){
       console.log(err);
@@ -21,7 +21,7 @@ router.get('/', function(req, res){
   console.log('in get');
   pg.connect(connection, function(err, client, done){
     var results = [];
-    var query = client.query('SELECT * FROM ijo');
+    var query = client.query('SELECT * FROM jobs2');
     query.on('row', function(row){
       // row.date.moment().format();
       if(row.company !== null){
@@ -40,7 +40,7 @@ router.get('/loadJobs', function(req, res){
   console.log('in get');
   pg.connect(connection, function(err, client, done){
     var results = [];
-    var query = client.query('SELECT * FROM ijo ORDER BY id');
+    var query = client.query('SELECT * FROM jobs2 ORDER BY id');
     query.on('row', function(row){
       // row.date.moment().format();
       if(row.company !== null){
