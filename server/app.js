@@ -21,6 +21,8 @@ app.listen(app.get('port'), function() {
 
 var addJob = require('../server/routes/addJob');
 var updateStatus = require('../server/routes/updateStatus');
+var removeJob = require('../server/routes/removeJob');
 
 app.use('/addJob', addJob);
 app.use('/updateStatus', updateStatus);
+app.use('/removeJob', removeJob);

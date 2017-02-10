@@ -128,5 +128,13 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
 
   $scope.removeJob = function(index){
     console.log(index);
+    var jobToRemove = {
+      id: index
+    };
+    $http({
+      method: 'POST',
+      url: '/removeJob',
+      data: jobToRemove
+    });
   };
 }]);
