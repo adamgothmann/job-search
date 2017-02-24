@@ -38,46 +38,43 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   $scope.heardBack = [];
   $scope.interviewScheduled = [];
   $scope.interviewed = [];
+
   $http({
     method: 'GET',
     url:'/addJob/loadJobs'
   }).then(function(response){
     $scope.allJobs = response.data;
-    for(var i = 0; i < $scope.allJobs.length; i++) {
-      switch($scope.allJobs[i].status){
-        case 'applied':
-          // $scope.applied = $scope.allJobs.slice(i, (i + 1));
-          var applied = $scope.allJobs.slice(i, (i + 1)).pop();
-          $scope.applied.push(applied);
-          break;
-        case 'rejected':
-          // $scope.rejected = $scope.allJobs.slice(i, (i + 1));
-          var rejected = $scope.allJobs.slice(i, (i + 1)).pop();
-          $scope.rejected.push(rejected);
-          break;
-        case 'heard back':
-          // $scope.heardBack = $scope.allJobs.slice(i, (i + 1));
-          var heardBack = $scope.allJobs.slice(i, (i + 1)).pop();
-          $scope.heardBack.push(heardBack);
-          break;
-        case 'interview scheduled':
-          // $scope.interviewScheduled = $scope.allJobs.slice(i, (i + 1));
-          var interviewScheduled = $scope.allJobs.slice(i, (i + 1)).pop();
-          $scope.interviewScheduled.push(interviewScheduled);
-          break;
-        case 'interviewed':
-          // $scope.interviewed = $scope.allJobs.slice(i, (i + 1));
-          var interviewed = $scope.allJobs.slice(i, (i + 1)).pop();
-          $scope.interviewed.push(interviewed);
-          break;
+      for(var i = 0; i < $scope.allJobs.length; i++) {
+        switch($scope.allJobs[i].status){
+          case 'applied':
+            // $scope.applied = $scope.allJobs.slice(i, (i + 1));
+            var applied = $scope.allJobs.slice(i, (i + 1)).pop();
+            $scope.applied.push(applied);
+            break;
+          case 'rejected':
+            // $scope.rejected = $scope.allJobs.slice(i, (i + 1));
+            var rejected = $scope.allJobs.slice(i, (i + 1)).pop();
+            $scope.rejected.push(rejected);
+            break;
+          case 'heard back':
+            // $scope.heardBack = $scope.allJobs.slice(i, (i + 1));
+            var heardBack = $scope.allJobs.slice(i, (i + 1)).pop();
+            $scope.heardBack.push(heardBack);
+            break;
+          case 'interview scheduled':
+            // $scope.interviewScheduled = $scope.allJobs.slice(i, (i + 1));
+            var interviewScheduled = $scope.allJobs.slice(i, (i + 1)).pop();
+            $scope.interviewScheduled.push(interviewScheduled);
+            break;
+          case 'interviewed':
+            // $scope.interviewed = $scope.allJobs.slice(i, (i + 1));
+            var interviewed = $scope.allJobs.slice(i, (i + 1)).pop();
+            $scope.interviewed.push(interviewed);
+            break;
+        }
       }
-    }
-    console.log("applied ", $scope.applied );
-    console.log("rejected ", $scope.rejected);
-    console.log("heard back: ",$scope.heardBack);
-    console.log("interview scheduled: ", $scope.interviewScheduled);
-    console.log("interviewed ", $scope.interviewed);
-  });
+    });
+
 
   $scope.sendJob = function(){
     var status = 'applied';
@@ -135,6 +132,18 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       method: 'POST',
       url: '/removeJob',
       data: jobToRemove
+    });
+  };
+
+  $scope.followUp = function(index){
+    console.log('followUp:' + index);
+    var jobToChange = {
+      index: index
+    };
+    $http({
+      method: 'POST',
+      url: '/followUp',
+      data: jobToChange
     });
   };
 }]);

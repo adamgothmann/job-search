@@ -7,6 +7,7 @@
         <th class="col-md-2">Date applied</th>
         <th class="col-md-2">Status</th>
         <th class="col-md-2">Change status</th>
+        <!-- <th class="col-md-1">Followed</th> -->
       </tr>
   </div>
   <div class="row">
@@ -20,6 +21,7 @@
             <option value="">select status</option>
           </select>
         </td>
+        <td class="col-md-1"><input type="checkbox" ng-model="follow" class="follow" ng-change="followUp($index + 1)" name="" value=""></td>
         <td><button ng-click="removeJob($index + 1)" class="remove" type="button" name="button">delete</button></td>
       </tr>
     </table>
