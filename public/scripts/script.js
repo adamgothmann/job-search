@@ -44,6 +44,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     url:'/addJob/loadJobs'
   }).then(function(response){
     $scope.allJobs = response.data;
+    console.log($scope.allJobs);
       for(var i = 0; i < $scope.allJobs.length; i++) {
         switch($scope.allJobs[i].status){
           case 'applied':
@@ -73,7 +74,15 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
             break;
         }
       }
+      $scope.checkbox = {
+        value: $scope.allJobs.followed_up
+      };
     });
+
+    $scope.checkbox = {
+      value1: true,
+      value2: false
+    };
 
 
   $scope.sendJob = function(){
