@@ -124,6 +124,11 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       id: index,
       status: this.status.status
     };
+
+    console.log($scope.allJobs[(index - 1)]);
+    $scope.allJobs[(index - 1)].status = this.status.status;
+    console.log($scope.allJobs[(index - 1)]);
+
     console.log(statusToSend);
     $http({
       method: 'POST',
