@@ -93,6 +93,10 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       date: $scope.date,
       status: status
     };
+
+    $scope.allJobs.push(jobToSend);
+    console.log($scope.allJobs);
+
     $http({
       method: 'POST',
       url: '/addJob',
@@ -125,9 +129,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       status: this.status.status
     };
 
-    console.log($scope.allJobs[(index - 1)]);
     $scope.allJobs[(index - 1)].status = this.status.status;
-    console.log($scope.allJobs[(index - 1)]);
 
     console.log(statusToSend);
     $http({
@@ -138,6 +140,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   };
 
   $scope.removeJob = function(index){
+    $scope.allJobs.splice(index, 1);
     console.log(index);
     var jobToRemove = {
       id: index
