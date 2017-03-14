@@ -46,6 +46,13 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     $scope.allJobs = response.data;
     console.log($scope.allJobs);
       for(var i = 0; i < $scope.allJobs.length; i++) {
+        // console.log($scope.allJobs[i].company, $scope.allJobs[i].followed_up);
+        // if($scope.allJobs[i].followed_up == true){
+        //   console.log($scope.allJobs[i].company);
+        //   $scope.follow = true;
+        // } else {
+        //   // console.log($scope.allJobs[i].followed_up);
+        // }
         switch($scope.allJobs[i].status){
           case 'applied':
             // $scope.applied = $scope.allJobs.slice(i, (i + 1));
@@ -74,15 +81,9 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
             break;
         }
       }
-      $scope.checkbox = {
-        value: $scope.allJobs.followed_up
-      };
     });
 
-    $scope.checkbox = {
-      value1: true,
-      value2: false
-    };
+
 
 
   $scope.sendJob = function(){
@@ -152,15 +153,23 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     });
   };
 
-  $scope.followUp = function(index){
-    console.log('followUp:' + index);
+  $scope.followUp = function(id, index){
+    console.log(id, index, document.getElementById(id).checked);
+    if(document.getElementById(id).checked === true)
+    {
+      console.log('true');
+    }else if(document.getElementById(id).checked === false){
+      console.log('false');
+    }else{
+      console.log('didn\'t work');
+    }
     var jobToChange = {
       index: index
     };
-    $http({
-      method: 'POST',
-      url: '/followUp',
-      data: jobToChange
-    });
+    // $http({
+    //   method: 'POST',
+    //   url: '/followUp',
+    //   data: jobToChange
+    // });
   };
 }]);
