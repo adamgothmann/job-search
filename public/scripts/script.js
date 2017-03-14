@@ -105,13 +105,13 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     console.log('jobToSend', jobToSend);
     $scope.company = '';
     $scope.title = '';
-    $http({
-      method: 'GET',
-      url: '/addJob',
-    }).then(function(response){
-      $scope.allJobs = response.data;
-      console.log($scope.allJobs);
-    });
+    // $http({
+    //   method: 'GET',
+    //   url: '/addJob',
+    // }).then(function(response){
+    //   $scope.allJobs = response.data;
+    //   console.log($scope.allJobs);
+    // });
   };//end sendJob
   // $scope.sendJob();//loads jobs on page load
 
@@ -139,11 +139,11 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     });
   };
 
-  $scope.removeJob = function(index){
+  $scope.removeJob = function(id, index){
+    console.log(id, index);
     $scope.allJobs.splice(index, 1);
-    console.log(index);
     var jobToRemove = {
-      id: index
+      id: id
     };
     $http({
       method: 'POST',
