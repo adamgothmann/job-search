@@ -86,12 +86,12 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
 
 
   $scope.sendJob = function(){
-    var status = 'applied';
     var jobToSend = {
       company: $scope.company,
       title: $scope.title,
       date: $scope.date,
-      status: status
+      status: "applied",
+      followed_up: "FALSE"
     };
 
     $scope.allJobs.push(jobToSend);
