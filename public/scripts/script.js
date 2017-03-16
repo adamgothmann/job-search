@@ -39,6 +39,13 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   $scope.interviewScheduled = [];
   $scope.interviewed = [];
 
+  var totalJobs;
+
+
+
+
+
+
   $http({
     method: 'GET',
     url:'/addJob/loadJobs'
@@ -81,12 +88,17 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
             break;
         }
       }
+      $scope.totalJobs = $scope.allJobs.length;
+      console.log($scope.totalJobs);
     });
 
 
 
 
+
+
   $scope.sendJob = function(){
+    $scope.totalJobs++;
     var jobToSend = {
       company: $scope.company,
       title: $scope.title,
@@ -141,6 +153,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   };
 
   $scope.removeJob = function(id, index){
+    $scope.totalJobs--;
     console.log(id, index);
     $scope.allJobs.splice(index, 1);
     var jobToRemove = {
