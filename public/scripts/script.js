@@ -41,11 +41,6 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
 
   var totalJobs;
 
-
-
-
-
-
   $http({
     method: 'GET',
     url:'/addJob/loadJobs'
@@ -96,7 +91,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
 
 
 
-
+  //Creates an object from the form fields.
   $scope.sendJob = function(){
     $scope.totalJobs++;
     var jobToSend = {
@@ -107,9 +102,11 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       followed_up: "FALSE"
     };
 
+    //pushes the job to the allJobs array.
     $scope.allJobs.push(jobToSend);
     console.log($scope.allJobs);
 
+    //Sends the job to the /addJob route on the server.
     $http({
       method: 'POST',
       url: '/addJob',
@@ -128,6 +125,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   };//end sendJob
   // $scope.sendJob();//loads jobs on page load
 
+  //available options for job status.
   $scope.jobStatus = [
     {status: 'applied'},
     {status: 'rejected'},
@@ -135,7 +133,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     {status: 'interview scheduled'},
     {status: 'interviewed'}
   ];
-  // $scope.jobStatus = ['applied', 'rejected', 'heard back', 'interview scheduled', 'interviewed'];
+
   $scope.getStatus = function(index){
     var statusToSend = {
       id: index,
@@ -143,8 +141,9 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     };
 
     $scope.allJobs[(index - 1)].status = this.status.status;
-
     console.log(statusToSend);
+
+    //sends the current jobs status to the /updateStatus route on the server.
     $http({
       method: 'POST',
       url: '/updateStatus',
@@ -152,13 +151,19 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     });
   };
 
+  //Removes a job from the view.
   $scope.removeJob = function(id, index){
+    //Decrements the total job count by 1.
     $scope.totalJobs--;
+
     console.log(id, index);
     $scope.allJobs.splice(index, 1);
+
     var jobToRemove = {
       id: id
     };
+
+    //Sends the id of the job to be removed to the /removeJob route on the server.
     $http({
       method: 'POST',
       url: '/removeJob',

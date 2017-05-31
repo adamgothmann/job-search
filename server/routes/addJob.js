@@ -6,10 +6,11 @@ var moment = require('moment');
 var connection = require('../modules/connection');
 var router = express.Router();
 
+//Inserts jobs into the database.
 router.post('/', function(req, res){
   console.log(req.body);
   pg.connect(connection, function(err, client, done){
-    var query = client.query('INSERT INTO jobs3 (company, title, date, status, followed_up) VALUES ($1, $2, $3, $4, $5)', [req.body.company, req.body.title, req.body.date, req.body.status, req.body.followed_up]);
+    var query = client.query('INSERT INTO jobs4 (company, title, date, status, followed_up) VALUES ($1, $2, $3, $4, $5)', [req.body.company, req.body.title, req.body.date, req.body.status, req.body.followed_up]);
 
     if(err){
       console.log(err);
@@ -21,9 +22,8 @@ router.get('/', function(req, res){
   console.log('in get');
   pg.connect(connection, function(err, client, done){
     var results = [];
-    var query = client.query('SELECT * FROM jobs3');
+    var query = client.query('SELECT * FROM jobs4');
     query.on('row', function(row){
-      // row.date.moment().format();
       if(row.company !== null){
         results.push(row);
       }
@@ -36,11 +36,12 @@ router.get('/', function(req, res){
   });
 });
 
+//Selects the jobs from the database.
 router.get('/loadJobs', function(req, res){
   console.log('in get');
   pg.connect(connection, function(err, client, done){
     var results = [];
-    var query = client.query('SELECT * FROM jobs3 ORDER BY id');
+    var query = client.query('SELECT * FROM jobs4 ORDER BY id');
     query.on('row', function(row){
       // row.date.moment().format();
       if(row.company !== null){

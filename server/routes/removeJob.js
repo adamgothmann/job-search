@@ -5,10 +5,11 @@ var pg = require('pg');
 var connection = require('../modules/connection');
 var router = express.Router();
 
+//deletes the job from the database.
 router.post('/', function(req, res){
   console.log(req.body);
   pg.connect(connection, function(err, client, done){
-    client.query('DELETE FROM jobs3 WHERE id = ' + [req.body.id]);
+    client.query('DELETE FROM jobs4 WHERE id = ' + [req.body.id]);
   });
 });
 
