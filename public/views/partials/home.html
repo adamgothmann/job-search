@@ -23,7 +23,7 @@
             <option value="">change status</option>
           </select>
         </td>
-        <td class="col-md-1"><input type="checkbox" ng-model="follow" ng-checked="job.followed_up == true" id="job.id" ng-change="followUp(job.id, $index + 1)" name="" value=""></td>
+        <td class="col-md-1"><input type="checkbox" ng-model="follow" ng-checked="job.followed_up == true" id="job.id" ng-change="followUp(job.id, $index + 1)"></td>
         <td><button ng-click="removeJob(job.id, $index)" class="remove" type="button" name="button">delete</button></td>
       </tr>
     </table>

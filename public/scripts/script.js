@@ -184,10 +184,10 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     var jobToChange = {
       index: index
     };
-    // $http({
-    //   method: 'POST',
-    //   url: '/followUp',
-    //   data: jobToChange
-    // });
+    $http({
+      method: 'POST',
+      url: '/followUp',
+      data: jobToChange
+    });
   };
 }]);
