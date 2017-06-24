@@ -19,7 +19,7 @@
         <td class="col-md-2">{{job.date}}</td>
         <td class="col-md-2">{{job.status}}</td>
         <td class="col-md-2">
-          <select ng-model="status" ng-options="job.status for job in jobStatus" ng-change="getStatus($index + 1)">
+          <select ng-model="status" ng-options="job.status for job in jobStatus" ng-change="updateStatus(job.id, $index)">
             <option value="">change status</option>
           </select>
         </td>

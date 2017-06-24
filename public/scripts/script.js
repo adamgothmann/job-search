@@ -100,17 +100,6 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
 
     });
 
-    // var appliedJobs = $scope.applied.length;
-    // var rejectedJobs = $scope.rejected.length;
-    // var heardBackJobs = $scope.heardBack.length;
-    // var interviewScheduledJobs = $scope.interviewScheduled.length;
-    // var interviewedJobs = $scope.interviewed.length;
-
-
-
-
-
-
   //Creates an object from the form fields.
   $scope.sendJob = function(){
     $scope.totalJobs++;
@@ -154,13 +143,13 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
     {status: 'interviewed'}
   ];
 
-  $scope.getStatus = function(index){
+  $scope.updateStatus = function(id, index){
     var statusToSend = {
-      id: index,
+      id: id,
       status: this.status.status
     };
 
-    $scope.allJobs[(index - 1)].status = this.status.status;
+    $scope.allJobs[(index)].status = this.status.status;
     console.log(statusToSend);
 
     //sends the current jobs status to the /updateStatus route on the server.

@@ -9,7 +9,7 @@ var router = express.Router();
 router.post('/', function(req,res){
   console.log(req.body);
   pg.connect(connection, function(err, client, done){
-    console.log('in query');
+    console.log('in updateStatus');
     client.query('UPDATE jobs4 SET status = ($1) WHERE id = ($2)', [ req.body.status, req.body.id ] );
   });
 });
