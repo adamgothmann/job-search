@@ -22,7 +22,7 @@ router.get('/', function(req, res){
   console.log('in get');
   pg.connect(connection, function(err, client, done){
     var results = [];
-    var query = client.query('SELECT * FROM jobs4');
+    var query = client.query('SELECT * FROM jobs4 ORDER BY id');
     query.on('row', function(row){
       if(row.company !== null){
         results.push(row);
