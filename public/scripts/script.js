@@ -46,7 +46,6 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
   var interviewScheduledJobs;
   var interviewedJobs;
 
-
   $http({
     method: 'GET',
     url:'/addJob'
@@ -99,6 +98,8 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       console.log("appliedJobs" + $scope.appliedJobs);
 
     });
+  
+
 
   //Creates an object from the form fields.
   $scope.sendJob = function(){
