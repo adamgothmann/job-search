@@ -9,7 +9,7 @@ var router = express.Router();
 router.post('/', function(req, res){
   console.log(req.body);
   pg.connect(connection, function(err, client, done){
-    client.query('DELETE FROM jobs4 WHERE id = ' + [req.body.id]);
+    client.query('DELETE FROM jobs6 WHERE id = ' + [req.body.id]);
   });
 });
 

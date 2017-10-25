@@ -98,7 +98,7 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       console.log("appliedJobs" + $scope.appliedJobs);
 
     });
-  
+
 
 
   //Creates an object from the form fields.
@@ -199,5 +199,9 @@ myApp.controller('mainController', ['$scope', '$http', function($scope, $http){
       url: '/followUp',
       data: jobToChange
     });
+  };
+
+  $scope.search = function(){
+    console.log('search');
   };
 }]);
